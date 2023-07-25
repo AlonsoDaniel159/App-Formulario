@@ -1,0 +1,91 @@
+<div class="container">
+    <div class="row d-flex justify-content-center">
+        <div class="col-md-10 col-lg-10 mt-4 border rounded-2 p-3 bg-light">
+            <h1 class="text-center">Datos del Cliente</h1>
+            <form action="" [formGroup]="formClient" (submit)="enviar()">
+                <div class="row">
+                    <div class="mb-3 col-10 col-md-6">
+                        <label for="nombres" class="form-label">Nombres</label>
+                        <input type="text" formControlName="nombres" class="form-control" id="nombres" 
+                        placeholder="Ingrese sus nombres">
+
+                        <div class="alert alert-danger mt-2" 
+                        [hidden]="nombres.valid || nombres.pristine">
+                            <span *ngIf="nombres?.errors?.['required']">Los nombres son obligatorios</span>
+                            <span *ngIf="nombres?.errors?.['minlength'] || nombres?.errors?.['maxlength']">
+                                Los nombres deben tener de 7 a 25 caracteres
+                            </span>
+                        </div>
+                    </div>
+                    <div class="mb-3 col-10 col-md-6">
+                        <label for="apellidos" class="form-label">Apellidos</label>
+                        <input type="text" formControlName="apellidos" class="form-control" id="apellidos"
+                        placeholder="Ingrese sus apellidos">
+                    
+                        <div class="alert alert-danger mt-2" 
+                        [hidden]="apellidos.valid || apellidos.pristine">
+                            <span *ngIf="apellidos?.errors?.['required']">Los apellidos son obligatorios</span>
+                            <span *ngIf="apellidos?.errors?.['minlength'] || apellidos?.errors?.['maxlength']">
+                                Los apellidos deben tener de 7 a 25 caracteres
+                            </span>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="mb-3 col-10 col-md-6">
+                        <label for="dni" class="form-label">DNI</label>
+                        <input type="text" formControlName="dni" class="form-control" id="dni">
+                    
+                        <div class="alert alert-danger mt-2" 
+                        [hidden]="dni.valid || dni.pristine">
+                            <span *ngIf="dni?.errors?.['required']">El dni es obligatorio</span>
+                            <span *ngIf="dni?.errors?.['pattern']">
+                                El dni solo debe tener 8 números
+                            </span>
+                        </div>
+                    </div>
+                    <div class="mb-3 col-10 col-md-6">
+                        <label for="telefono" class="form-label">Teléfono</label>
+                        <input type="number" formControlName="telefono" class="form-control" id="telefono">
+
+                        <div class="alert alert-danger mt-2" 
+                        [hidden]="telefono.valid || telefono.pristine">
+                            <span *ngIf="telefono?.errors?.['required']">El teléfono es obligatorio</span>
+                            <span *ngIf="telefono?.errors?.['pattern']">
+                                El teléfono solo debe tener 9 números
+                            </span>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="mb-3 col-10 col-md-6">
+                        <label for="direccion" class="form-label">Dirección</label>
+                        <input type="text" formControlName="direccion" class="form-control" id="direccion"
+                        placeholder="Ingrese su dirección">
+                    
+                        <div class="alert alert-danger mt-2" 
+                        [hidden]="direccion.valid || direccion.pristine">
+                            <span *ngIf="direccion?.errors?.['required']">La dirección es obligatoria</span>
+                            <span *ngIf="direccion?.errors?.['minlength'] || direccion?.errors?.['maxlength']">
+                                La dirección debe tener de 6 a 50 caracteres
+                            </span>
+                        </div>
+                    </div>
+                    <div class="mb-3 col-10 col-md-6">
+                        <label for="fecha" class="form-label">Fecha de Adquisición</label>
+                        <input type="date" formControlName="fecha" class="form-control" id="fecha">
+                        
+                        <div class="alert alert-danger mt-2" 
+                        [hidden]="fecha.valid || fecha.pristine">
+                            <span *ngIf="fecha?.errors?.['required']">La fecha es obligatoria</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="d-flex justify-content-between">
+                    <input type="submit" class="btn btn-primary btn-md" [disabled]="validar()" value="Crear">
+                    <button type="button" class="btn btn-danger" (click)="salir()">Salir</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
